@@ -34,15 +34,20 @@ jobs:
       run: npm ci
       working-directory: next-stop-is
 
-    - name: build the app
-      run: npm run build --if-present
-      working-directory: next-stop-is
+    # - name: build the app
+    #   run: npm run build --if-present
+    #   working-directory: next-stop-is
     
-    - name: start server
-      run: npm run dev
-      working-directory: next-stop-is
+    # - name: start server
+    #   run: npm run dev
+    #   working-directory: next-stop-is
 
     - name: Cypress
       uses: cypress-io/github-action@v5
+      
       with:
-        start: false
+        working-directory: next-stop-is
+        build: npm run build --if-present
+        start: npm run dev
+        browser: chrome
+        
