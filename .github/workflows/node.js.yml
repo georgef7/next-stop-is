@@ -1,4 +1,4 @@
-name: Build and test next stop is
+name: Next Stop Is Build Action
 
 on:
   push:
@@ -34,19 +34,14 @@ jobs:
       run: npm ci
       working-directory: next-stop-is
 
-    - name: Build
+    - name: Build next stop is
       run: npm run build --if-present
       working-directory: next-stop-is
-    
-    # - name: start server
-    #   run: npm run dev
-    #   working-directory: next-stop-is
 
-    - name: e2e Cypress Tests
-      uses: cypress-io/github-action@v5
+    - name: Run Cypress Tests
+      uses: cypress-io/github-action@v6
       with:
         working-directory: next-stop-is
-        #build: npm run build --if-present
         start: npm run dev
         browser: chrome
         
